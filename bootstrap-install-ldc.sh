@@ -1,6 +1,9 @@
-mkdir -p d-rpi && cd d-rpi
+if [[ " $* " == *" help "* ]]
+then
+  echo 'Sample usage: bootstrap-install.ldc.sh [cmake-src|cmake-apt-get] [apt-get] [ldc0] [ldc-git]'
+fi
 
-echo 'Sample usage: bootstrap-install.ldc.sh [cmake-src|cmake-apt-get] [apt-get] [ldc0] [ldc-git]'
+mkdir -p d-rpi && cd d-rpi
 
 #### CMake start ####
 if [[ " $* " == *" cmake-src "* ]]
