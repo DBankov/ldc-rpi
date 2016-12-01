@@ -52,13 +52,16 @@ fi
 if [[ " $* " == *" ldc0 "* ]]
 then
   set -ex
-  echo 'Downloading and extracting LDC-1.1.0-beta3...'
+  echo 'Downloading and extracting LDC-1.1.0-beta3 and dub...'
   wget https://github.com/ldc-developers/ldc/releases/download/v1.1.0-beta3/ldc2-1.1.0-beta3-linux-armv7hf.tar.xz
   tar xf ldc2-1.1.0-beta3-linux-armv7hf.tar.xz
+  sudo cp ldc2-1.1.0-beta3-linux-arm/bin/dub /usr/bin
   echo 'LDC-1.1.0-beta3 downloaded successfully!'
+  dub --version
+  echo 'DUB installed successfully!'
   set +ex
 else
-  echo 'Skipped LDC-1.1.0-beta.';
+  echo 'Skipped download LDC-1.1.0-beta and dub.';
 fi
 #### LDC-1.1.0-beta3 end ####
 
