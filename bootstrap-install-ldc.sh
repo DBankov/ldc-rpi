@@ -1,6 +1,6 @@
 if [[ " $* " == *" help "* ]]
 then
-  echo 'Sample usage: bootstrap-install.ldc.sh [cmake-src|cmake-apt-get] [apt-get] [ldc0] [ldc-git]'
+  echo 'Sample usage: bootstrap-install.ldc.sh [cmake-src|cmake-apt-get] [apt-get] [ldc0] [ldc-git] [ldc-git-build]'
 fi
 
 mkdir -p d-rpi && cd d-rpi
@@ -81,11 +81,16 @@ else
 fi
 
 
-set -ex
-cd ldc-git
-mkdir build && cd build
-cmake .. -DD_COMPILER=`realpath ../../ldc2-1.1.0-beta3-linux-arm/bin/ldmd2`
-make -j1
-sudo make install
-set +ex
+if [[ " $* " == *" ldc-git-build "* ]]
+then
+  set -ex
+  cd ldc-git
+  mkdir build && cd build
+  cmake .. -DD_COMPILER=`realpath ../../ldc2-1.1.0-beta3-linux-arm/bin/ldmd2`
+  make -j1
+  sudo make install
+  set +ex
+else
+  echo 'Skipped build of LDC-git.';
+fi
 #### LDC-git end ####
