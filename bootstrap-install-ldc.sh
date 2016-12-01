@@ -38,7 +38,7 @@ if [[ " $* " == *" apt-get "* ]]
 then
   set -ex
   echo 'Installing various prerequisites via apt-get...'
-  sudo apt-get install -y llvm-3.7-dev libconfig++-dev libcurl4-gnutls-dev libedit-dev zlib1g-dev
+  sudo apt-get install -y llvm-3.7-dev libconfig++-dev libcurl4-gnutls-dev libedit-dev zlib1g-dev libssl-dev libevent-dev
   echo 'llvm-3.7-dev, libconfig++-dev, libcurl4-gnutls-dev, libedit-dev and zlib1g-dev installed successfully!'
   set +ex
 else
