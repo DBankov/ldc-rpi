@@ -1,6 +1,6 @@
 if [[ " $* " == *" help "* ]]
 then
-  echo 'Sample usage: bootstrap-install.ldc.sh [cmake-src|cmake-apt-get] [apt-get] [ldc0] [ldc-git] [ldc-git-build]'
+  echo 'Sample usage: bootstrap-install.ldc.sh [cmake-src|cmake-apt-get] [apt-get] [sdl2-apt-get] [ldc0] [ldc-git] [ldc-git-build]'
 fi
 
 mkdir -p d-rpi && cd d-rpi
@@ -33,7 +33,7 @@ fi
 
 
 
-#### LLVM start ####
+#### apt-get start ####
 if [[ " $* " == *" apt-get "* ]]
 then
   set -ex
@@ -44,8 +44,21 @@ then
 else
   echo 'Skipped installing prerequisites via apt-get.';
 fi
-#### LLVM end ####
+#### apt-get end ####
 
+
+#### libSDL2 start ####
+if [[ " $* " == *" sdl2-apt-get "* ]]
+then
+  set -ex
+  echo 'Installing libsdl2-dev via apt-get...'
+  sudo apt-get install -y libsdl2-dev
+  echo 'libsdl2-dev installed successfully!'
+  set +ex
+else
+  echo 'Skipped installing libsdl2 via apt-get.';
+fi
+#### libSDL2 end ####
 
 
 #### LDC-1.1.0-beta3 start ####
